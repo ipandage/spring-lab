@@ -47,24 +47,21 @@ public class IndexController {
         return modelAndView;
     }
 
-//    @RequestMapping(value="/login.do",method=RequestMethod.POST)
-//    public ModelAndView login2(HttpServletRequest request,HttpServletResponse response,String name,String pwd){
-//        ModelAndView modelAndView = new ModelAndView("Index"); 
-//        System.out.println("name:"+name+" pwd:"+pwd);
+//    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+//    public ModelAndView login2(HttpServletRequest request, HttpServletResponse response,
+//        String name, String pwd) {
+//        ModelAndView modelAndView = new ModelAndView("Index");
+//        System.out.println("name:" + name + " pwd:" + pwd);
 //        return modelAndView;
-//        }
-
-//    @RequestMapping(value="/login.do",method=RequestMethod.POST)
-//    public ModelAndView login3(HttpServletRequest request,HttpServletResponse response,User user){
-//        ModelAndView modelAndView = new ModelAndView("Index"); 
-//        String username=request.getParameter("name");
-//        System.out.println("username:"+username);
-//        String pwd=request.getParameter("pwd");
-//        System.out.println("pwd:"+pwd);
-//        
-//        System.out.println("name:"+user.getName()+" pwd:"+user.getPwd());
+//    }
+//
+//    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+//    public ModelAndView login3(HttpServletRequest request, HttpServletResponse response, User user) {
+//        ModelAndView modelAndView = new ModelAndView("Index");
+//        String username = request.getParameter("name");
+//        String pwd = request.getParameter("pwd");
 //        return modelAndView;
-//        }
+//    }
 
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     public ModelAndView login4(HttpServletRequest request, HttpServletResponse response, User user) {

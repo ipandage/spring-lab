@@ -15,7 +15,7 @@ public class XMLInstance {
         this.air = air;
     }
 
-    public void Breath() {
+    public void breath() {
         System.out.println("Name:" + this.name + ";Air:" + this.air.toString());
     }
 

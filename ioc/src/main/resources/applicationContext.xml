@@ -25,10 +25,10 @@
         <qualifier value="cleanair"/>
     </bean>
 
-<!--    <bean id="xmlinstance" class="com.demo.model.XMLInstance" scope="prototype">-->
-<!--        <property name="air" ref="CleanAir"></property>-->
-<!--        <property name="name" value="abc"></property>-->
-<!--    </bean>-->
+    <bean id="xmlinstance" class="com.demo.model.XMLInstance" scope="prototype">
+        <property name="air" ref="CleanAir"></property>
+        <property name="name" value="abc"></property>
+    </bean>
 <!--    <bean id="xmlcontructinstance" class="com.demo.model.XMLInstance">-->
 <!--        <constructor-arg index="1" ref="CleanAir"></constructor-arg>-->
 <!--        <constructor-arg index="0" value="abc"></constructor-arg>-->

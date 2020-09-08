@@ -41,7 +41,10 @@
     </mvc:interceptors>
     
      <mvc:interceptors> 
-        <mvc:interceptor><mvc:mapping path="/**"/><bean class="com.demo.model.LoginIntercepter"/></mvc:interceptor>  
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.demo.model.LoginIntercepter"/>
+        </mvc:interceptor>
     </mvc:interceptors> 
     <!-- 对静态资源文件的访问 方案一 （二选一） -->
     <mvc:default-servlet-handler /> 
