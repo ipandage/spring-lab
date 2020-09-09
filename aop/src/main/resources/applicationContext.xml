@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:context="http://www.springframework.org/schema/context"
-xmlns:mvc="http://www.springframework.org/schema/mvc"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:aop="http://www.springframework.org/schema/aop"
-xsi:schemaLocation="
-http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd
-http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context.xsd
-http://www.springframework.org/schema/mvc
-http://www.springframework.org/schema/mvc/spring-mvc.xsd
-http://www.springframework.org/schema/aop
-http://www.springframework.org/schema/aop/spring-aop.xsd
-">
-   <!-- 配置自动扫描的包 -->
-    <context:component-scan base-package="Services"></context:component-scan>
-    <!-- 自动为切面方法中匹配的方法所在的类生成代理对象。 -->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-<bean id="serviceImplA" class="Services.AOPServicesImpl">
-	<property name="description" value="basicAop"></property>
-</bean>
-
- <bean id="serviceAspectBean" class="Services.XMLAdvice" />
-<aop:config>
-    <aop:aspect id="serviceAspect" ref="serviceAspectBean">
-        <aop:pointcut id="servicePointcut" expression="execution(* Services.*.withAop*(..))" />
-        <aop:before pointcut-ref="servicePointcut" method="beforeAdvice" />
-        <aop:after pointcut-ref="servicePointcut" method="afterAdvice" />
-        <aop:after-returning pointcut-ref="servicePointcut" method="afterReturnAdvice" returning="result" />
-        <aop:around pointcut-ref="servicePointcut" method="aroundAdvice" />
-        <aop:after-throwing pointcut-ref="servicePointcut" method="throwingAdvice" throwing="e" />
-    </aop:aspect>
-</aop:config>
-</beans>
+  <bean id="aopInterceptor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+  	<property name="advice">
+  		<bean class="basicAop.AOPInterceptor"></bean>
+  	</property>
+  	<property name="mappedName" value="withAopMethod"></property>
+  </bean>
+  
+  <bean id="aopService" class="org.springframework.aop.framework.ProxyFactoryBean">
+  	<property name="interceptorNames">
+  		<list>
+  		<value>aopInterceptor</value>	
+  		</list>
+  	</property>
+  	<property name="target">
+  		<bean class="basicAop.AOPServicesImpl">
+  			<property name="description" value="basicAop"></property>
+  		</bean>
+  	</property>
+  </bean>
+ </beans>
+ 

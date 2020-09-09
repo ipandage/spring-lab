@@ -1,6 +1,7 @@
 package com.demo.BeanFactoryDemo;
 
 
+import com.demo.model.Person;
 import com.demo.model.XMLInstance;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -24,11 +25,15 @@ public class App {
 //            new String[]{"classpath:ApplicationContext.xml"});
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"ApplicationContext.xml"});
         BeanFactory factory = context;
-        XMLInstance instance = (XMLInstance) factory.getBean("xmlinstance");
-        instance.setName("123");
-        instance.breath();
-        instance = (XMLInstance) factory.getBean("xmlinstance");
-        instance.breath();
+
+        Person person = (Person) factory.getBean("person");
+        person.breath();
+
+//        XMLInstance instance = (XMLInstance) factory.getBean("xmlinstance");
+//        instance.setName("123");
+//        instance.breath();
+//        instance = (XMLInstance) factory.getBean("xmlinstance");
+//        instance.breath();
 //        test=(XMLInstance)factory.getBean("xmlcontructinstance");
 //    	test.Breath();
 //        test=(XMLInstance)factory.getBean("xmlfactoryinstance");

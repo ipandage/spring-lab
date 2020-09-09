@@ -24,10 +24,10 @@ public class AOPInterceptor implements AfterReturningAdvice, MethodBeforeAdvice,
     }
 
     public void afterThrowing(Exception ex) {
-        System.out.println("�׳����쳣:" + ex.getMessage());
+        System.out.println("抛出了异常:" + ex.getMessage());
     }
 
     public void afterThrowing(Method method, Object[] args, Object target, Exception ex) {
-        System.out.println("����" + method.getName() + "�׳����쳣:" + ex.getMessage());
+        System.out.println("方法" + method.getName() + ":抛出了异常" + ex.getMessage());
     }
 }
